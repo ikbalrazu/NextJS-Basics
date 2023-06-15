@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 function Postlist({data}) {
     console.log(data);
@@ -6,7 +7,9 @@ function Postlist({data}) {
             {data.map((post,index)=>{
                 return(
                     <div key={index}>
+                        <Link href={`/getstaticpaths/${post.id}`} passHref>
                         <h1>{post.title}</h1>
+                        </Link>
                         <p>{post.body}</p>
                     </div>
                 )
