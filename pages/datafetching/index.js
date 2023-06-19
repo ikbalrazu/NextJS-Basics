@@ -7,10 +7,10 @@ function Postlist({data}) {
             {data.map((post,index)=>{
                 return(
                     <div key={index}>
-                        <Link href={`/getstaticpaths/${post.id}`} passHref>
+                        <Link href={`/datafetching/${post.id}`} passHref>
                         <h1>{post.title}</h1>
                         </Link>
-                        <p>{post.body}</p>
+                        {/* <p>{post.body}</p> */}
                     </div>
                 )
             })}
@@ -18,7 +18,17 @@ function Postlist({data}) {
     );
 }
 
-export async function getStaticProps(ctx){
+// export async function getStaticProps(ctx){
+//     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+//     const data = await res.json();
+//     return{
+//         props:{
+//             data: data,
+//         }
+//     }
+// }
+
+export async function getServerSideProps(){
     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
     const data = await res.json();
     return{
